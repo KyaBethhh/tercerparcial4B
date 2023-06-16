@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcd.bootstrapcdn.con/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="foooter.css">    
+    <link rel="stylesheet" type="text/css" href="formulario.css">            
+    <title>Calculadora Fisica</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body{
+        font-family: Arial, sans-serif;
+        place-items: center;
+        background-image: linear-gradient(to right, purple, pink, green);
+        height: 100vh;
+    }
+
+    .calc{
+        width: 30%;
+        height: 60%;
+        background-color: transparent;
+        position: absolute;
+        border: 2px solid black;
+        border-radius: 10px;
+        z-index: 1;
+    }
+
+    #ans{
+        width: 90%;
+        margin-top: 20px;
+        font-family: arial;
+        font-size: 20px;
+        color: blue;
+        text-align: right;
+    }
+
+    .btn input[type='button']{
+        width: 70px;
+        height: 50px;
+        padding: 2px;
+        margin: 4px;
+        position: relative;
+        left: 23px;
+        top: 20px;
+        height: 55px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: all 0.5s ease;
+        background-color: transparent;
+        border-radius: 6px;
+    }
+
+    .btn input[type='button']:hover{
+        background-color: pink;
+        color: white;
+    }
+</style>
+<body>
+    <div style="margin:24px;">
+        <nav class="navbar navbar-light" style="background-color: #E4C1F9;">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Inicio</a>
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="menu.html">Menu</a> 
+                    </li>
+                    <li>
+                        <a href="formulario.html">Formulario</a>
+                    </li>
+                    <li>
+                        <a href="cuestionario.html">Cuestionario</a>
+                    </li>
+                    <li>
+                        <a href="perfil.html">Perfil</a>
+                    </li>
+                    <li>
+                        <a href="apimovie.html">Api Movies</a>
+                    </li>
+                    <li>
+                        <a href="calculadorafisica.html">Calculadorafisica</a>
+                    </li>
+                    <li>
+                        <a href="calculadora.html">Calculadora</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="calc">
+                <input type="text" id="ans">
+                <div class="btn">
+                    <input type="button" value='C' onclick="Clear()">
+                    <input type="button" value='%' onclick="Solve('%')">
+                    <input type="button" value='←' onclick="Back('←')">
+                    <input type="button" value='/' onclick="Solve('/')">
+                    <br>
+                    <input type="button" value='7' onclick="Solve('7')">
+                    <input type="button" value='8' onclick="Solve('8')">
+                    <input type="button" value='9' onclick="Solve('9')">
+                    <input type="button" value='x' onclick="Solve('*')">
+                    <br>
+                    <input type="button" value='4' onclick="Solve('4')">
+                    <input type="button" value='5' onclick="Solve('5')">
+                    <input type="button" value='6' onclick="Solve('6')">
+                    <input type="button" value='-' onclick="Solve('-')">
+                    <br>
+                    <input type="button" value='1' onclick="Solve('1')">
+                    <input type="button" value='2' onclick="Solve('2')">
+                    <input type="button" value='3' onclick="Solve('3')">
+                    <input type="button" value='+' onclick="Solve('+')">
+                    <br>
+                    <input type="button" value='00' onclick="Solve('00')">
+                    <input type="button" value='0' onclick="Solve('0')">
+                    <input type="button" value='.' onclick="Solve('.')">
+                    <input type="button" value='=' onclick="Result()">
+                    <br>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            const Solve = (val)=> {
+                const v=document.getElementById('ans');
+                v.value +=val;
+            }
+            const Result = () =>{
+                const v1=document.getElementById('ans').value;
+                const v2=eval(v1);
+                document.getElementById('ans').value=v2;
+            }
+            const Clear = () =>{
+                const input=document.getElementById('ans');
+                input.value='';
+            }
+            const Back = () =>{
+                const back=document.getElementById('ans');
+                back.value=back.value.slice(0,-1);
+            }
+        </script>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section about">
+                        <h2>Contactame</h2>
+                        <p>Si estás interesado en contactarme, puedes hacerlo a través de cualquiera de nuestras redes sociales:</p>
+                        <div class="contact-links">
+                            <a href="https://www.facebook.com/miperfil" target="_black">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="https://www.instagram.com/miperfil" target="_black">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.twitter.com/miperfil" target="_black">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://www.snapchat.com/miperfil" target="_black">
+                                <i class="fab fa-snapchat"></i>
+                            </a>
+                            <a href="https://www.youtube.com/miperfil" target="_black">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script >
+            const socialnetworks = document.querySelectorAll('.contact-links a');
+            socialnetworks.forEach(link => {
+                link.addEventListener('click', e => {
+                    e.preventDefault();
+                    window.open(link.href, '_blank');
+                });
+            });
+        </script>
+    </div>
+</body>
+</html>

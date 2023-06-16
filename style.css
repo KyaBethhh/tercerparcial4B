@@ -1,0 +1,17 @@
+video{
+	position: absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	object-fit:cover;
+
+}
+.titulo{
+    font-family:'KG One More Night' , sans-serif ;
+    font-size:90px;
+    background: pink;
+    text-align:center;
+    font-weight:200;
+    mix-blend-mode: multiply;
+}

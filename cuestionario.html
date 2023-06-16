@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcd.bootstrapcdn.con/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="foooter.css">    
+<link rel="stylesheet" type="text/css" href="formulario.css">            
+<title>Api Movies </title>
+</head>
+<style>
+    .quiz-container {
+        outline: #33FF34 1px;
+        background-color: #3D348B;
+        border-radius: 10px;
+        box-shadow: 0 0 10px 2px #3D348B;
+        width: 700px;
+        overflow: hidden;
+    }
+
+    .quiz-header {
+        padding: 4rem;
+    }
+li label {
+        cursor: pointer;
+    }
+
+    button {
+        background-color: #F6F6F6;
+        color: #6A33FF;
+        border: none;
+        display: block;
+        width: 100%;
+        cursor: pointer;
+        font-size: 15px;
+        font-family: verdana, Geneva;
+        padding: 15px;
+    }
+
+    button:hover {
+        background-color: #7a74af;
+    }
+
+    button:focus {
+        outline: none;
+        background-color: #822f8e;
+    }
+    </style>
+<body >
+
+<div style="margin:24px;">
+    <nav class="navbar navbar-light" style="background-color: #E4C1F9;">
+    <div class="container">
+    <a class="navbar-brand" href="index.html">Inicio</a>
+    <ul class="nav navbar-nav">
+<li>
+<a href="menu.html">Menu</a> 
+</li>
+<li>
+    <a href="formulario.html">Formulario</a>
+</li>
+<li>
+<a href="cuestionario.html">Cuestionario</a>
+</li>
+<li>
+<a href="perfil.html">Perfil</a>
+</li>
+<li>
+<a href="apimovie.html">Api Movies</a>
+</li>
+</li>
+<li>
+<a href="calculadorafisica.html">Calculadorafisica</a>
+</li>
+</li>
+<li>
+<a href="calculadora.html">Calculadora</a>
+</li>
+</ul>
+</div>
+</nav>
+<div class="quiz-container" id="quiz">
+  <div class="quiz-header">
+    <div class="image-container">
+      <img src="" alt="Imagen" id="question-image" style="width:250px; height:200px;">
+    </div>
+    <h2 id="question">Question text</h2>
+    <ul>
+      <li>
+        <input type="radio" name="answer" id="a" class="answer">
+        <label for="a" id="a_text">Question</label>
+      </li>
+      <li>
+        <input type="radio" name="answer" id="b" class="answer">
+        <label for="b" id="b_text">Question</label>
+      </li>
+      <li>
+        <input type="radio" name="answer" id="c" class="answer">
+        <label for="c" id="c_text">Question</label>
+      </li>
+      <li>
+        <input type="radio" name="answer" id="d" class="answer">
+        <label for="d" id="d_text">Question</label>
+      </li>
+    </ul>
+  </div>
+  <button id="submit">Siguiente</button>
+</div>
+
+<script>
+const quizData = [
+  {
+    question: "Cual de las siguientes no pertenece a blackpink?",
+    image: "imagen.jpg",
+    a: "Lisa",
+    b: "Nayeon",
+    c: "Rose",
+    d: "Jisoo",
+    correct: "b",
+  },
+  {
+    question: "En que año debuto blackpink?",
+    image: "1.jpg",
+    a: "2016",
+    b: "2018",
+    c: "2012",
+    d: "2056",
+    correct: "a",
+  },
+  {
+    question: "Porque Jisoo falto al bornpink en osaka?",
+    image: "imagen4.jpg",
+    a: "Se salio del grupo",
+    b: "se enfermo",
+    c: "estaba de viaje",
+    d: "simplemente no quiso ir",
+    correct: "b",
+  },
+  {
+    question: "la cantante Jisoo pertenece a la banda de...",
+    image: "imagen2.jpg",
+    a: "Twice",
+    b: "Fifty Fifty",
+    c: "Blackpink",
+    d: "Itzy",
+    correct: "c",
+  },
+  {
+    question: "cual el la menor del grupo de Blackpink?",
+    image: "imagen5.jpg",
+    a: "Jisoo",
+    b: "Rose",
+    c: "Jennie",
+    d: "Lisa",
+    correct: "d",
+  },
+  {
+    question: "cuantas chicas integran Blackpink?",
+    image: "imagen6.jpg",
+    a: "4",
+    b: "6",
+    c: "7",
+    d: "3",
+    correct: "a",
+  },
+  {
+    question: "como se llama el grupo de fans de Blackpink?",
+    image: "imagen7.jpg",
+    a: "BLACK",
+    b: "PINKS",
+    c: "BLINK",
+    d: "ARMY",
+    correct: "c",
+  },
+  {
+    question: "cual de estos es uno de los nombres de los gatitos de Lisa?",
+    image: "imagen8.jpg",
+    a: "Dalgom",
+    b: "Hank",
+    c: "Kai",
+    d: "Leo",
+    correct: "d",
+  },
+];
+
+const quiz = document.getElementById('quiz');
+const answerEls = document.querySelectorAll('.answer');
+const questionEl = document.getElementById('question');
+const a_text = document.getElementById('a_text');
+const b_text = document.getElementById('b_text');
+const c_text = document.getElementById('c_text');
+const d_text = document.getElementById('d_text');
+const imageEl = document.getElementById('question-image');
+const submitBtn = document.getElementById('submit');
+
+let currentQuiz = 0;
+let score = 0;
+
+loadQuiz();
+
+function loadQuiz() {
+  deselectAnswers();
+
+  const currentQuizData = quizData[currentQuiz];
+
+  questionEl.innerText = currentQuizData.question;
+  a_text.innerText = currentQuizData.a;
+  b_text.innerText = currentQuizData.b;
+  c_text.innerText = currentQuizData.c;
+  d_text.innerText = currentQuizData.d;
+  imageEl.src = currentQuizData.image;
+}
+
+function deselectAnswers() {
+  answerEls.forEach((answerEl) => (answerEl.checked = false));
+}
+
+function getSelected() {
+  let answer;
+
+  answerEls.forEach((answerEl) => {
+    if (answerEl.checked) {
+      answer = answerEl.id;
+    }
+  });
+
+  return answer;
+}
+
+submitBtn.addEventListener('click', () => {
+  const answer = getSelected();
+
+  if (answer) {
+    if (answer === quizData[currentQuiz].correct) {
+      score++;
+    }
+
+    currentQuiz++;
+
+    if (currentQuiz < quizData.length) {
+      loadQuiz();
+    } else {
+      quiz.innerHTML = `
+        <h2>Respondiste ${score}/${quizData.length} preguntas correctamente</h2>
+        <button onclick="location.reload()">Volver a intentar</button>
+      `;
+    }
+  }
+});
+</script>
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h2>Contactame</h2>
+                <p>Si estas interesado en contactareme,puedes hacerlo atraves de cualquiera de nuestras redes sociales :</p>
+                <div class="contact-links">
+                    <a href="https://www.facebook.com/miperfil" target="_black">
+                        <i class="fab fa-facebook"></i>
+
+        <a href="https://www.instagram.com/miperfil" target="_black">
+        <i class="fab fa-instagram"></i>
+          <a href="https://www.twitter.com/miperfil" target="_black">
+            <i class="fab fa-twitter"></i>
+            <a href="https://www.snapchat.com/miperfil" target="_black">
+            <i class="fab fa-snapchat"></i>
+            <a href="https://www.youtube.com/miperfil" target="_black">
+            <i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </footer>
+<script >
+       const socialnetworks = document.querySelectorAll('.contact-links a');
+    socialnetworks.forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            window.open(link.href, '_blank');
+        });
+    });
+    </script>
+</body>
+</html>

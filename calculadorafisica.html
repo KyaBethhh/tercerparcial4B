@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcd.bootstrapcdn.con/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="foooter.css">    
+    <link rel="stylesheet" type="text/css" href="formulario.css">            
+    <title>Calculadora Fisica</title>
+</head>
+<style >
+    input,select, option{
+        color: black;
+    }
+    body{
+        background-color: pink;
+    }
+    footer{
+        background-image: linear-gradient(to right, purple, pink, green);
+    }
+</style>
+<body >
+    <div style="margin:24px;">
+        <nav class="navbar navbar-light" style="background-color: #E4C1F9;">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Inicio</a>
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="menu.html">Menu</a> 
+                    </li>
+                    <li>
+                        <a href="formulario.html">Formulario</a>
+                    </li>
+                    <li>
+                        <a href="cuestionario.html">Cuestionario</a>
+                    </li>
+                    <li>
+                        <a href="perfil.html">Perfil</a>
+                    </li>
+                    <li>
+                        <a href="apimovie.html">Api Movies</a>
+                    </li>
+                    <li>
+                        <a href="calculadorafisica.html">Calculadorafisica</a>
+                    </li>
+                    <li>
+                        <a href="calculadora.html">Calculadora</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <footer>
+        <div class="jumbotron jumbotron-fluid">
+            <div style="color:black;" class="container">
+              <h1 class="display-4">FISICA CUANTICA</h1>
+              <p  style="color:pink"class="lead">La Mecánica Cuántica es la rama de la Física que estudia la materia a escalas muy pequeñas: a nivel molecular, atómico y aún menor. De no ser por su descubrimiento no se hubiese podido descubrir la electrónica (desde ordenadores a móviles), ni los láseres, ni los nuevos materiales</p>
+            </div>
+          </div>
+          
+          <form id ="formulario">
+            <label for="distancia">Distancia:</label>
+            <input type="text" id="distancia" name="distancia">
+            <select id="distanciaUnidad">
+            <option  value="metros">metros</option>
+            <option value="pies">pies</option>
+            </select>
+            <br>
+            <label  for="tiempo">Tiempo:</label>
+            <input type="text" id="tiempo" name="tiempo">
+            <select id="tiempoUnidad">
+            <option value="segundos">segundos</option>
+            <option value="horas">horas</option>
+            </select>
+            <br>
+            <label for="velocidadUnidad">Unidades de Velocidad:</label>
+            <select id="velocidadUnidad">
+               <option value="metros_por_segundo">m/s</option>
+               <option value="pies_por_segundo">ft/s</option>
+               <option value="kilometros_por_hora">km/hr</option>
+               <option value="millas_por_hora">mph</option>
+            </select>
+            <br>
+            <br>
+          <button type="button" class="btn-success" value="calcular" onclick="Calcular()">Calcular</button>
+          </form>
+          <br>
+          <p id="resultado"></p>
+          
+          <p style="color:#942278; background-color:#0dad55">Velocidad:<span id="velocidad"></span></p>
+          <p style="color:#9e076c; background-color:#467bc0">Aceleracion:<span id="aceleracion"></span></p>
+          
+          <p style="color:#be2148; background-color:#b7e044">Rapidez:<span id="rapidez"></span></p>
+          
+          
+          <script type="text/javascript">
+            function Calcular(){
+              const distancia=parseFloat(document.getElementById('distancia').value);
+              const tiempo=parseFloat(document.getElementById('tiempo').value);
+              //*Estas variables son para poner las unidades metricas
+               const distanciaUnidad=document.getElementById('distanciaUnidad').value;
+               const tiempoUnidad=document.getElementById('tiempoUnidad').value;
+               const velocidadUnidad=document.getElementById('velocidadUnidad').value;
+          //*Convertir unidades a sistema metrico Internacional
+          let distanciaSI=0;
+          let tiempoSI=0;
+          //*Dependiendo
+          if(distanciaUnidad==='metros'){
+            distanciaSI=distancia;
+            }else if(distanciaUnidad==='pies'){
+               distanciaSI=distancia/3.281;//son 3 pies por cada metro.por eso a division  de 3.281,para mas informacion
+            }
+              if(tiempoUnidad==='segundos'){
+                tiempoSI=tiempo;
+              }else if (tiempoUnidad==='horas'){
+                tiempoSI=tiempo*3600;//Lo 
+              }
+          //Con el siguiente  codigo ,voy a calcular la velocidad,aceleracion y rapidez(aunque no hay formula ,por lo pronto )
+          
+          let velocidad=0;
+          let  aceleracion=0;
+          let rapidez=0;
+          if (velocidadUnidad==='metros_por_segundo'){
+            velocidad=distanciaSI/tiempoSI;
+            rapidez=velocidad;
+            aceleracion= velocidad/tiempoSI;
+          }
+          else if(velocidadUnidad==='pies_por_segundo'){
+            velocidad=(distanciaSI*3.281)/tiempoSI;
+            rapidez=velocidad;
+            aceleracion=velocidad/tiempoSI;
+          }
+          else if(velocidadUnidad==='kilometros_por_hora'){
+            velocidad=(distanciaSI/1000)/(tiempoSI/3600);
+            rapidez=velocidad;
+            aceleracion=velocidad/(tiempoSI/3600);
+          }
+          else if(velocidadUnidad==='millas_por_hora'){
+            velocidad=(distanciaSI/1609)/(tiempoSI/3600);
+            rapidez=velocidad;
+            aceleracion=velocidad/(tiempoSI/3600);
+          }
+          
+          let resultado='';
+          document.getElementById('velocidad').textContent=velocidad.toFixed(2)+''+velocidadUnidad;
+          
+          
+          document.getElementById('aceleracion').textContent=aceleracion.toFixed(2)+''+'m/s^2';
+          
+          document.getElementById('rapidez').textContent=rapidez.toFixed(2)+''+velocidadUnidad;
+          document.getElementById('resultado').innerHTML=resultado;
+          }
+          </script>
+          
+
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-section about">
+                        <h2>Contactame</h2>
+                        <p>Si estás interesado en contactarme, puedes hacerlo a través de cualquiera de nuestras redes sociales:</p>
+                        <div class="contact-links">
+                            <a href="https://www.facebook.com/miperfil" target="_black">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="https://www.instagram.com/miperfil" target="_black">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.twitter.com/miperfil" target="_black">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://www.snapchat.com/miperfil" target="_black">
+                                <i class="fab fa-snapchat"></i>
+                            </a>
+                            <a href="https://www.youtube.com/miperfil" target="_black">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script >
+            const socialnetworks = document.querySelectorAll('.contact-links a');
+            socialnetworks.forEach(link => {
+                link.addEventListener('click', e => {
+                    e.preventDefault();
+                    window.open(link.href, '_blank');
+                });
+            });
+        </script>
+    </div>
+</body>
+</html>
