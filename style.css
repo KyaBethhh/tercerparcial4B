@@ -15,3 +15,6 @@ video{
     font-weight:200;
     mix-blend-mode: multiply;
 }
+body{
+	background-image: linear-gradient(to right, purple, pink, green);
+}

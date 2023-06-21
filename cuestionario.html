@@ -13,8 +13,8 @@
 </head>
 <style>
     .quiz-container {
-        outline: #33FF34 1px;
-        background-color: #3D348B;
+        outline: #ffafcc 1px;
+        background-color: #ffafcc;
         border-radius: 10px;
         box-shadow: 0 0 10px 2px #3D348B;
         width: 700px;
@@ -47,6 +47,9 @@ li label {
     button:focus {
         outline: none;
         background-color: #822f8e;
+    }
+    body{
+    	background:linear-gradient(to right, purple, pink, green);
     }
     </style>
 <body >
@@ -184,7 +187,116 @@ const quizData = [
     d: "Leo",
     correct: "d",
   },
+  {
+    question: "cual fue la primera integrante revelada?",
+    image: "imagen9.jpg",
+    a: "Lisa",
+    b: "Jennie",
+    c: "Rose",
+    d: "Jisoo",
+    correct: "b",
+  },
+  {
+    question: "con cual de estas canciones debutaron?",
+    image: "imagen10.jpg",
+    a: "stay",
+    b: "pink venom",
+    c: "Boombayah",
+    d: "whistle",
+    correct: "c",
+  },
+  {
+    question: "quienes son coreanas?",
+    image: "imagen11.jpg",
+    a: "lisa y Jennie",
+    b: "Rose y Jisoo",
+    c: "Jennie y Rose",
+    d: "Jisoo y Jennie",
+    correct: "d",
+  },
+  {
+    question: "cual era la edad de Jisoo en 2019?",
+    image: "imagen12.jpg",
+    a: "24",
+    b: "25",
+    c: "28",
+    d: "22",
+    correct: "a",
+  },
+  {
+    question: "cual es el nombre real de Jennie?",
+    image: "imagen13.jpg",
+    a: "Kim-Jennie",
+    b: "Kim jennie",
+    c: "Jennie",
+    d: "Jennie Kim",
+    correct: "d",
+  },
+  {
+    question: "cuando nacio lisa?",
+    image: "imagen14.jpg",
+    a: "20 de septiembre 1999",
+    b: "25 de junio de 1998",
+    c: "27 de marzo e 1997",
+    d: "22 de agosto de 1996",
+    correct: "c",
+  },
+  {
+    question: "De donde es Rose?",
+    image: "imagen15.jpg",
+    a: "Australia",
+    b: "Corea del sur",
+    c: "Corea de Norte",
+    d: "Nueva Zelanda",
+    correct: "d",
+  },
+  {
+    question: "Quien es la mejor cocinando?",
+    image: "imagen16.jpg",
+    a: "Rose",
+    b: "Jennie",
+    c: "Lisa",
+    d: "Jisoo",
+    correct: "b",
+  },
+  {
+    question: "Cual es el color favorito de Lisa?",
+    image: "imagen17.jpg",
+    a: "Amarillo",
+    b: "Rosa",
+    c: "Verde",
+    d: "Azul",
+    correct: "a",
+  },
+  {
+    question: "Quien es la Lider?",
+    image: "imagen18.jpg",
+    a: "Lisa",
+    b: "Jisoo",
+    c: "Rose",
+    d: "Ninguna",
+    correct: "d",
+  },
+  {
+    question: "Todas tienen un solo?",
+    image: "imagen19.jpg",
+    a: "No",
+    b: "Si,todas",
+    c: "No,solo Jennie",
+    d: "No, solo Lisa y Rose",
+    correct: "b",
+  },
+  {
+    question: "cuantos perros tiene Jisoo?",
+    image: "imagen20.jpg",
+    a: "Ninguno",
+    b: "2",
+    c: "1",
+    d: "3",
+    correct: "c",
+  },
 ];
+
 
 const quiz = document.getElementById('quiz');
 const answerEls = document.querySelectorAll('.answer');

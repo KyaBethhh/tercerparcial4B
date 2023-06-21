@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">                
     <title>Api Movies</title>
 </head>
-<body style="background-color:pink">
+<body>
 <style type="text/css">
   .container2 {
     margin: 0 auto;
@@ -93,7 +93,7 @@
 <div class="container2">
     <h1>Pagina de peliculas de Bethhh</h1>
     <form id="form">
-        <input type="text" name="search" placeholder="Busca aquí tu película">
+        <input type="text" id="search" placeholder="Busca aquí tu película">
         <input type="submit" value="search">
     </form>
     <section id="main" class="movies"></section>
@@ -101,8 +101,8 @@
 
 <script>
     const API_URL = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=3fd2be6f0c70a2a598f084ddfb75487c&page=1';
-    const IMG_PATH = "https://image.tmdb.org/t/p/w1280";
-    const SEARCH_API = 'https://api.themoviedb.org/3/search/movie?api_key=3fd2be6f0c70a2a598f084ddfb75487c&query=';
+    const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
+    const SEARCH_API = 'https://api.themoviedb.org/3/search/movie?api_key=3fd2be6f0c70a2a598f084ddfb75487c&query="';
 
     const main = document.getElementById('main');
     const form = document.getElementById('form');
@@ -117,7 +117,7 @@
     }
 
     function showMovies(movies) {
-        main.innerHTML = '';
+        main.innerHTML='';
         movies.forEach((movie) => {
             const { title, poster_path, vote_average, overview, release_date } = movie;
 
@@ -133,34 +133,33 @@
                     <h3>Overview</h3>
                     ${overview}
                     <h3>Release Date</h3>
-                    ${release_date}
-                </div>
-            `;
+                    ${release_date}</div>
+            `
 
             main.appendChild(movieEL);
-        });
+        })
     }
 
-    function getClassByRate(vote) {
-        if (vote >= 8) {
+    function getClassByRate(vote){
+        if (vote>=8) {
             return 'green';
-        } else if (vote >= 5) {
+        } else if (vote>=5) {
             return 'orange';
         } else {
             return 'red';
         }
     }
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const searchTerm = search.value;
+    if (searchTerm && searchTerm !== ''){
+        getMovies(SEARCH_API + searchTerm)
+        search.value = '';
+    }else {
+        window.location.reload();
+    }
+});
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const searchTerm = search.value;
-        if (searchTerm && searchTerm !== '') {
-            getMovies(SEARCH_API + searchTerm);
-            search.value = '';
-        } else {
-            window.location.reload();
-        }
-    });
 </script>
 
 <footer>
